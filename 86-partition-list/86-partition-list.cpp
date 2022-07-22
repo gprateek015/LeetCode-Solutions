@@ -17,15 +17,16 @@ public:
         ListNode* b_head = b;
         while(head) {
             if(head->val < x) {
-                a->next = new ListNode(head->val);
+                a->next = head;
                 a = a->next;
             } else {
-                b->next = new ListNode(head->val);
+                b->next = head;
                 b = b->next;
             }
             head = head->next;
         }
         a->next = b_head->next;
+        b->next=NULL;
         return ans->next;
     }
 };
