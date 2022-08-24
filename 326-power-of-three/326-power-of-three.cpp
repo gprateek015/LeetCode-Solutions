@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool isPowerOfThree(int n) {
-        // 3^19 = 1162261467
-       	return n > 0 && 1162261467 % n == 0;
+        double a = log10(n)/log10(3);
+        return fmod(a, 1)==0;
     }
 };
