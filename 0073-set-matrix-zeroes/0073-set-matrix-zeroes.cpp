@@ -1,28 +1,22 @@
 class Solution {
 public:
     void setZeroes(vector<vector<int>>& matrix) {
-        vector<int> r, c;
+        set<int> r, c;
         for(int i=0; i<matrix.size(); i++) {
             for(int j=0; j<matrix[0].size(); j++) {
                 if(matrix[i][j]==0) {
-                    r.push_back(i);
-                }
-            }
-        }
-        for(int i=0; i<matrix[0].size(); i++) {
-            for(int j=0; j<matrix.size(); j++) {
-                if(matrix[j][i]==0) {
-                    c.push_back(i);
+                    r.insert(i);
+                    c.insert(j);
                 }
             }
         }
         for(int i=0; i<matrix.size(); i++) {
-            bool flag_r = binary_search(r.begin(), r.end(), i);
+            bool flag_r = r.find(i)!=r.end();
             for(int j=0; j<matrix[0].size(); j++) {
                 if(flag_r) 
                     matrix[i][j] = 0;
                 else {
-                    bool flag_c = binary_search(c.begin(), c.end(), j);
+                    bool flag_c = c.find(j) != c.end();
                     if(flag_c)
                         matrix[i][j] = 0;
                 }
